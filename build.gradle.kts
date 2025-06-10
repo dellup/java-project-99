@@ -54,3 +54,7 @@ tasks.asciidoctor {
 	inputs.dir(project.extra["snippetsDir"]!!)
 	dependsOn(tasks.test)
 }
+
+application {
+	mainClass = "hexlet.code.demo.AppApplication"
+}
