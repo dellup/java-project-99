@@ -78,7 +78,6 @@
 
     <!-- Checks for whitespace                               -->
     <!-- See https://checkstyle.org/config_whitespace.html -->
-    <module name="FileTabCharacter"/>
 
     <!-- Miscellaneous other checks.                   -->
     <!-- See https://checkstyle.org/config_misc.html -->
