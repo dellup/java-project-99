@@ -1,4 +1,4 @@
-package hexlet.code.demo.controller;
+package hexlet.code.demo.controller.api;
 
 import hexlet.code.demo.dto.AuthRequest;
 import hexlet.code.demo.util.JWTUtils;
