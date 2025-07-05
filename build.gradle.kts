@@ -29,15 +29,18 @@ repositories {
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-security:2.7.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.mapstruct:mapstruct:1.5.5.Final")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
 	implementation("org.openapitools:jackson-databind-nullable:0.2.6")
 	implementation("org.springframework.security:spring-security-oauth2-jose:6.0.3")
 	implementation("com.nimbusds:nimbus-jose-jwt:9.31")
 	testImplementation("org.springframework.security:spring-security-test:6.2.0")
+	implementation("org.springframework.security:spring-security-oauth2-resource-server:6.0.3")
 	testImplementation("org.instancio:instancio-core:3.6.0")
 	implementation("jakarta.validation:jakarta.validation-api:3.0.2")
 	compileOnly("org.projectlombok:lombok")
@@ -53,6 +56,8 @@ dependencies {
 	implementation("org.postgresql:postgresql:42.7.2")
 	testImplementation("net.javacrumbs.json-unit:json-unit-assertj:2.39.0")
 	testImplementation("org.assertj:assertj-core:3.25.3")
+	implementation("org.springframework.security:spring-security-config:6.3.5")
+	implementation("org.springframework.security:spring-security-web:6.3.5")
 }
 
 tasks.withType<Test> {

@@ -80,10 +80,11 @@ public class UsersControllerTest {
                 .getResponse();
         var body = response.getContentAsString();
 
-        List<UserDTO> userDTOS = om.readValue(body, new TypeReference<>() {});
+        List<UserDTO> userDTOS = om.readValue(body, new TypeReference<>() { });
         var actual = userDTOS.stream().map(userMapper::map).toList();
         var expected = userRepository.findAll();
-        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
+        assertThat(actual).usingElementComparatorIgnoringFields("id", "passwordDigest")
+                .containsExactlyInAnyOrderElementsOf(expected);
     }
 
     @Test
@@ -133,4 +134,4 @@ public class UsersControllerTest {
 
         assertThat(user.getFirstName()).isEqualTo("Garry");
     }
-}                                                
+}

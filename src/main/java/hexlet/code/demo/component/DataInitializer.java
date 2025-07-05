@@ -2,6 +2,7 @@ package hexlet.code.demo.component;
 
 
 import hexlet.code.demo.dto.UserCreateDTO;
+import hexlet.code.demo.exception.ResourceNotFoundException;
 import hexlet.code.demo.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -30,7 +31,8 @@ public class DataInitializer implements ApplicationRunner {
         userData.setPassword("qwerty");
         userService.createUser(userData);
 
-        var user = userRepository.findByEmail(email).get();
+        var user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User is empty"));
 
     }
 }

@@ -1,6 +1,5 @@
 package hexlet.code.demo.exception;
 
-import hexlet.code.demo.handler.GlobalExceptionHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

@@ -13,22 +13,30 @@ import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Mapper(uses = {JsonNullableMapper.class, ReferenceMapper.class},
+@Mapper(
+        uses = {JsonNullableMapper.class, ReferenceMapper.class},
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         componentModel = MappingConstants.ComponentModel.SPRING,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        unmappedTargetPolicy = ReportingPolicy.IGNORE
+)
 public abstract class UserMapper {
+
     @Autowired
     private PasswordEncoder encoder;
 
-    public abstract User map(UserCreateDTO dto);
+    @Mapping(target = "passwordDigest", source = "password")
+    public abstract User map(UserCreateDTO model);
+
+    public abstract User map(UserUpdateDTO model);
 
     @Mapping(target = "username", source = "email")
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "password", ignore = true)
-    public abstract UserDTO map(User user);
+    public abstract UserDTO map(User model);
 
     @Mapping(target = "email", source = "username")
-    public abstract User map(UserDTO dto);
+    public abstract User map(UserDTO model);
 
     public abstract void update(UserUpdateDTO update, @MappingTarget User destination);
 
