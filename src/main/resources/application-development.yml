@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:test
-    username: sa
-    password: '123'
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
+    username: "sa"
     driver-class-name: org.h2.Driver
+    password: "123"
   h2:
     console:
       enabled: true

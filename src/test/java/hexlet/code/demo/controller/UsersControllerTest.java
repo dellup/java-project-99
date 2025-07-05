@@ -123,6 +123,7 @@ public class UsersControllerTest {
     public void update() throws Exception {
         var data = new HashMap<>();
         data.put("firstName", "Garry");
+        data.put("email", "foo@gmail.com");
         var request = put("/api/users/" + testUser.getId())
                 .with(token)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -133,5 +134,6 @@ public class UsersControllerTest {
         var user = userRepository.findById(testUser.getId()).orElseThrow();
 
         assertThat(user.getFirstName()).isEqualTo("Garry");
+        assertThat(user.getUsername()).isEqualTo("foo@gmail.com");
     }
 }
