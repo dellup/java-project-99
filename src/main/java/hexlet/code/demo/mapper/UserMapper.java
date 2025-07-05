@@ -30,8 +30,6 @@ public abstract class UserMapper {
     public abstract User map(UserUpdateDTO model);
 
     @Mapping(target = "username", source = "email")
-    @Mapping(target = "firstName", source = "firstName")
-    @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "password", ignore = true)
     public abstract UserDTO map(User model);
 
